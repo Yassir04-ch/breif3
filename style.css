@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    background-image: linear-gradient(to bottom , #00C2FF , #A9F5FF);
+    color: white;
+    font-family: sans-serif;
+}
+section{
+    height: 100%;
+    place-items: center;
+    display: grid;
+    grid-template-rows: repeat(2,auto);
+    justify-content: center;
+}
+ section.acceuil h1{
+    width: max-content;
+    margin-left: 30%;
+ }
+  section.acceuil a{
+    width: 100%;
+  }
+ section.acceuil button{
+    padding: 10px;
+    width: 100%;
+    box-shadow: 0 -2px 20px black ;
+    background-color: yellow;
+    border: none;
+    border-radius: 7px;
+}
+section.acceuil button:hover{
+    transform: translateY(-3px);
+}
