@@ -18,6 +18,7 @@ section.game{
     margin: 100px auto 0;
     border-radius: 10px;
     padding: 20px;
+    box-shadow: 0 10px 30px black;
 }
 .button{
     background-color: white;
@@ -29,18 +30,24 @@ section.game{
     margin: 5px 0;
     border: none;
     cursor: pointer;
+    display: none;
 }
-.button:hover{
-    background-color: #939393ac;
-    color: white;
-}
-#next{
+#next , #finish , #return , #star{
     background-color:#001e4d;
     color:white;
     border: none;
     padding: 10px;
     margin: 5px 0;
     border-radius:7px;
-    width: 150px;
+    width: 100%;
     cursor: pointer;
+}
+#finish{
+    display: none;
+}
+#return{
+    display: none;
+}
+#next{
+    display: none;
 }
