@@ -20,7 +20,7 @@
 },
 {
    question: "quelle est capital Laquelle de ces syntaxes est correcte ?",
-   reponses: ["if(a != 2){}","if a!= 2{}"," if(a <> 2){}","had  if a <> 2 {}"],
+   reponses: ["if(a != 2){}","if a!= 2{}","if(a <> 2){}","had  if a <> 2 {}"],
    correct:"if(a != 2){}"
 },
 {
@@ -41,6 +41,7 @@ const resulta = document.getElementById("resulta");
 const star = document.getElementById("star");
 const back = document.getElementById("return");
 const para = document.getElementById("para");
+let reps = document.querySelectorAll("button.button")
 
 
 para.textContent = "Appuyez sur start pour commencer le jeu.";
@@ -67,10 +68,9 @@ function Afficher(){
 star.onclick = function chang(){
 if(step< questions.length){
     Afficher();
-    rep1.style.display = "block";
-    rep2.style.display = "block";
-    rep3.style.display = "block";
-    rep4.style.display = "block";
+    reps.forEach(function(i){
+    i.style.display = "block";
+})
     para.style.display = "none";
     star.style.display = "none";
     next.style.display = "block";
@@ -78,10 +78,9 @@ if(step< questions.length){
 }
 // event pour switch les question
 next.onclick = function chang(){
-     rep1.style.background = "white"; 
-     rep2.style.background = "white";
-     rep3.style.background = "white";
-     rep4.style.background = "white";
+    reps.forEach(function(i){
+    i.style.background = "white";
+})
  if( choix === questions[step].correct){
     scor++;
  }   
@@ -94,11 +93,10 @@ if(step >= 1){
 }
 if(step>questions.length-1){
     question.textContent = "QUIZ est Terminée, clique sur terminer pour voir le résultat.";
-    rep1.style.display = "none";
-    rep2.style.display = "none";
-    rep3.style.display = "none";
-    rep4.style.display = "none";
-    next.style.display = "none"
+    reps.forEach(function(i){
+    i.style.display = "none";
+})
+    next.style.display="none"
     finish.style.display= "block"
     back.style.display = "none"
 
@@ -108,7 +106,9 @@ if(step>questions.length-1){
 // even pour return question
 back.onclick = function back(){
     step--;
-    if(step < questions.length){
+    scor--;
+    console.log(scor)
+    if(step < questions[i].length){
     Afficher();
 }
 }
@@ -146,13 +146,24 @@ rep4.onclick = function(){
 // event de button finish
 
 finish.onclick = function result(){
-    rep1.style.display = "none";
-    rep2.style.display = "none";
-    rep3.style.display = "none";
-    rep4.style.display = "none";
+    afficher.style.display = "block"
+   reps.forEach(function(i){
+    i.style.display = "none";
+})
     finish.style.display = "none";
     question.textContent = "le résultat est: ";
     resulta.textContent = "votre score est :" + scor + "/" + questions.length ;
 
 }
+const afficher = document.getElementById("reponces")
+afficher.textContent = "Voir les reponces correctes"
+afficher.onclick = function repon(){
+    resulta.style.display = "none" ;
+    afficher.style.display = "none" ;
+    const corects = document.getElementById("corects");
 
+     question.textContent = "les reponces correctes :"
+    for(let i = 0 ; i<questions.length; i++){
+      corects.innerHTML += "-" + questions[i].correct + "<br>" + "<br>";
+}
+}
