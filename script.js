@@ -107,11 +107,11 @@ if(step>questions.length-1){
 back.onclick = function back(){
     step--;
     scor--;
-    console.log(scor)
-    if(step < questions[i].length){
+    if(step <= questions.length){
     Afficher();
 }
 }
+
 let choix ="";
 rep1.onclick = function(){
     choix = rep1.textContent;
